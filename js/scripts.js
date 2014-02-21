@@ -1,5 +1,4 @@
 var scoreForWord = function(word) {
-
   var score = 0;
   word.split("").forEach(function(letter) {
     score += scoreForLetter(letter);
@@ -31,7 +30,19 @@ var scoreForLetter = function(letter) {
   };
 };
 
+$(document).ready(function() {
+  $('#scrabble-score').submit(function(event) {
+    var scrabbleWord = ($('input#scrabble-word').val());
+    var result = scoreForWord(scrabbleWord);
 
+
+    $('#result').show();
+    $('.score').text(result);
+    $('#scrabble-word-input').text(scrabbleWord);
+    this.reset();
+    event.preventDefault();
+  })
+})
 
 
 
